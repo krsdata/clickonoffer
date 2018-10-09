@@ -18,32 +18,31 @@
                   </div> 
                 </div>  
                 <div class="panel-body">
-                    <div class="table-responsive">
-                                    <div class="table-toolbar">
-                                        <div class="row">
-                                            <form action="{{route('advertiser')}}" method="get" id="filter_data">
-                                            <div class="col-md-2">
-                                                <select name="status" class="form-control" onChange="SortByStatus('filter_data')">
-                                                    <option value="">Search by Status</option>
-                                                    <option value="active" @if($status==='active') selected  @endif>Active</option>
-                                                    <option value="inActive" @if($status==='inActive') selected  @endif>Inactive</option>
-                                                </select>
-                                            </div>
-                                            
-                                            <div class="col-md-2">
-                                                <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by Name/Email" type="text" name="search" id="search" class="form-control" >
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="submit" value="Search" class="btn btn-primary form-control">
-                                            </div>
-                                           
-                                        </form>
-                                        
-                                      
-                                        </div>
-                                    </div>
-                                    <br>
-                                     @if(Session::has('flash_alert_notice'))
+    
+                    <div class="table-toolbar">
+                        <div class="row">
+                            <form action="{{route('advertiser')}}" method="get" id="filter_data">
+                            <div class="col-md-2">
+                                <select name="status" class="form-control" onChange="SortByStatus('filter_data')">
+                                    <option value="">Search by Status</option>
+                                    <option value="active" @if($status==='active') selected  @endif>Active</option>
+                                    <option value="inActive" @if($status==='inActive') selected  @endif>Inactive</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by Name/Email" type="text" name="search" id="search" class="form-control" >
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" value="Search" class="btn btn-primary form-control">
+                            </div>
+                           
+                        </form>
+                        
+                      
+                        </div>
+                    </div>
+                  </div>            @if(Session::has('flash_alert_notice'))
                                          <div class="alert alert-success alert-dismissable" style="margin:10px">
                                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                           <i class="icon fa fa-check"></i>  
@@ -54,7 +53,8 @@
                                    
                                      <span class="caption-subject font-red sbold uppercase"> Record not found!</span>
                                     @else 
-                                    <table class="table table-striped table-hover table-bordered" id="">
+                                    <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered table-responsive" id="">
                                         <thead>
                                             <tr>
                                                  <th> Sno. </th>

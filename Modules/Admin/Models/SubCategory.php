@@ -10,15 +10,19 @@ use Nestable\NestableTrait;
 
 class SubCategory extends Eloquent
 {
-    use NestableTrait;
 
     protected $parent = 'parent_id';
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'categories';
+    protected $casts = [
+        'created_at' => 'datetime:m-d-Y',
+    ];
+
+    protected $table = 'ads_categories';
     /**
      * The attributes that are mass assignable.
      *
@@ -31,17 +35,13 @@ class SubCategory extends Eloquent
      */
     protected $primaryKey = 'id';
 
-    /**
+    /**++
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['sub_category_name'];  // All field of user table here
+    protected $fillable = ['name','parent_cat_id','slug','image','description'];  // All field of user table here
 
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+   
 }

@@ -22,14 +22,14 @@ class CategoryRequest extends FormRequest
                     }
                 case 'POST': {
                         return [
-                            'category_group_name'              => 'required|unique:categories,category_group_name',
-                            'category_group_image'             => 'required|mimes:jpeg,bmp,png,gif',
+                            'category_name'              => 'required|unique:categories,category_name',
+                            'category_image'             => 'required|mimes:jpeg,bmp,png,gif',
                         ];
                     }
                 case 'PUT':
                 case 'PATCH': {
                         return [
-                            'category_group_name'   => 'required',
+                            'category_name'   => 'required',
 
                         ];
 

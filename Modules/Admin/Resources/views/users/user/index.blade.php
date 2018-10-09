@@ -17,44 +17,41 @@
                     </div>
                   </div> 
                 </div>  
-                <div class="panel-body">
-                    <div class="table-responsive">
-                                    <div class="table-toolbar">
-                                        <div class="row">
-                                            <form action="{{route('user')}}" method="get" id="filter_data">
-                                            <div class="col-md-2">
-                                                <select name="status" class="form-control" onChange="SortByStatus('filter_data')">
-                                                    <option value="">Search by Status</option>
-                                                    <option value="active" @if($status==='active') selected  @endif>Active</option>
-                                                    <option value="inActive" @if($status==='inActive') selected  @endif>Inactive</option>
-                                                </select>
-                                            </div>
-                                             
-                                            <div class="col-md-2">
-                                                <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by Name/Email" type="text" name="search" id="search" class="form-control" >
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="submit" value="Search" class="btn btn-primary form-control">
-                                            </div>
-                                           
-                                        </form>
-                                        
-                                      
-                                        </div>
-                                    </div>
-                                    <br>
-                                     @if(Session::has('flash_alert_notice'))
-                                         <div class="alert alert-success alert-dismissable" style="margin:10px">
-                                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                          <i class="icon fa fa-check"></i>  
-                                         {{ Session::get('flash_alert_notice') }} 
-                                         </div>
-                                    @endif
-                                    @if($users->count()==0)
+                 <div class="panel-body"> 
+                  <div class="table-toolbar">
+                  <div class="row">
+                        <form action="{{route('user')}}" method="get" id="filter_data">
+                        <div class="col-md-2">
+                            <select name="status" class="form-control" onChange="SortByStatus('filter_data')">
+                                <option value="">Search by Status</option>
+                                <option value="active" @if($status==='active') selected  @endif>Active</option>
+                                <option value="inActive" @if($status==='inActive') selected  @endif>Inactive</option>
+                            </select>
+                        </div>
+                         
+                        <div class="col-md-2">
+                            <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by Name/Email" type="text" name="search" id="search" class="form-control" >
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" value="Search" class="btn btn-primary form-control">
+                        </div>
+                       
+                    </form>
+                    
+                  
+                    </div>
+                </div>
+              </div> 
+                 @if(Session::has('flash_alert_notice'))
+                     <div class="alert alert-success alert-dismissable" style="margin:10px">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                      <i class="icon fa fa-check"></i>  
+                     {{ Session::get('flash_alert_notice') }} 
+                     </div>
+                @endif
+                 <div class="table-responsive">
+                  <table class="table datatable-basic table-bordered table-hover table-responsive" id="roles_list">
                                    
-                                     <span class="caption-subject font-red sbold uppercase"> Record not found!</span>
-                                    @else 
-                                    <table class="table table-striped table-hover table-bordered" id="">
                                         <thead>
                                             <tr>
                                                  <th> Sno. </th>
@@ -97,14 +94,14 @@
                                                         </span>
                                                 </td>
                                                 <td> 
-                                      <a href="{{ route('user.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
-                                          <i class="fa fa-edit" title="edit"></i> Edit
-                                      </a>
+                                                  <a href="{{ route('user.edit',$result->id)}}" class="btn btn-primary btn-xs" style="margin-left: 20px">
+                                                      <i class="fa fa-edit" title="edit"></i> Edit
+                                                  </a>
 
-                                      {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('user.destroy', $result->id))) !!}
+                                                  {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('user.destroy', $result->id))) !!}
 
-                                      <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
-                                      </button>
+                                                  <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-trash" title="Delete"></i> Delete
+                                                  </button>
 
                                                         
                                                          {!! Form::close() !!}
@@ -113,14 +110,14 @@
                                                
                                             </tr>
                                            @endforeach
-                                         @endif   
+                                        
                                         </tbody>
                                     </table>
                                     Showing {{($users->currentpage()-1)*$users->perpage()+1}} to {{$users->currentpage()*$users->perpage()}}
                                     of  {{$users->total()}} entries
                                      <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
-                                </div>
-                </div> 
+                                
+                 </div> 
                </div>
          </div> 
    @stop

@@ -22,7 +22,7 @@ class Category extends Eloquent
         'created_at' => 'datetime:m-d-Y',
     ];
 
-    protected $table = 'categories';
+    protected $table = 'ads_categories';
     /**
      * The attributes that are mass assignable.
      *
@@ -35,12 +35,12 @@ class Category extends Eloquent
      */
     protected $primaryKey = 'id';
 
-    /**
+    /**++
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['category_group_name','category','description'];  // All field of user table here
+    protected $fillable = ['name','slug','image','description'];  // All field of user table here
 
 
     /**

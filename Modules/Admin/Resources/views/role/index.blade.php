@@ -19,7 +19,7 @@
   		        </div>  
 		        
   		        <div class="table-responsive">
-  		            <table class="table datatable-basic table-bordered table-hover" id="roles_list">
+  		            <table class="table datatable-basic table-bordered table-hover table-responsive" id="roles_list">
   		                <thead>
   		                    <tr>
   		                        <th>#Sno</th>

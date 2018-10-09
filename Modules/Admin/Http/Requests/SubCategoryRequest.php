@@ -22,18 +22,18 @@ class SubCategoryRequest extends FormRequest
                     }
                 case 'POST': {
                         return [
-                            'category_group_name'        => 'required',
-                            'category_name'              => 'required',
-                            'category_image'             => 'required|mimes:jpeg,bmp,png,gif',
+                            'category_name'        => 'required',
+                            'sub_category_name'    => 'required',
+                            'sub_category_image'   => 'required|mimes:jpeg,bmp,png,gif',
                         ];
                     }
                 case 'PUT':
                 case 'PATCH': {
                     if ($category = $this->category) {
                         return [
-                            'category_group_name'        => 'required',
-                            'category_name'              => 'required',
-                            'category_image'             => 'required|mimes:jpeg,bmp,png,gif',
+                            'category_name'        => 'required',
+                            'sub_category_name'    => 'required',
+                            'sub_category_image'   => 'required|mimes:jpeg,bmp,png,gif',
                         ];
                     }
                 }

@@ -18,7 +18,7 @@
                   </div> 
                 </div>  
                 <div class="panel-body">
-                    <div class="table-responsive">
+                    
                                     <div class="table-toolbar">
                                         <div class="row">
                                             <form action="{{route('singleUser')}}" method="get" id="filter_data">
@@ -41,7 +41,8 @@
                                         
                                       
                                         </div>
-                                    </div>
+                                    </div>  
+                            </div>
                                     <br>
                                      @if(Session::has('flash_alert_notice'))
                                          <div class="alert alert-success alert-dismissable" style="margin:10px">
@@ -50,11 +51,13 @@
                                          {{ Session::get('flash_alert_notice') }} 
                                          </div>
                                     @endif
+
                                     @if($users->count()==0)
                                    
                                      <span class="caption-subject font-red sbold uppercase"> Record not found!</span>
                                     @else 
-                                    <table class="table table-striped table-hover table-bordered" id="">
+                                  <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered table-responsive" id="">
                                         <thead>
                                             <tr>
                                                  <th> Sno. </th>
@@ -118,8 +121,7 @@
                                     </table>
                                     Showing {{($users->currentpage()-1)*$users->perpage()+1}} to {{$users->currentpage()*$users->perpage()}}
                                     of  {{$users->total()}} entries
-                                     <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
-                                </div>
+                                     <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div> 
                 </div> 
                </div>
          </div> 
